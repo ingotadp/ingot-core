@@ -1,10 +1,10 @@
-<div align="justify">
+<div align="left">
 
 > **This document provides basic style and structure recommendations for your Terraform configurations. These recommendations apply to reusable Terraform modules and to root configurations.**   
 
 </div>
 
-<div align="justify">
+<div align="left">
 
 This guide is not an introduction to Terraform. For an introduction to using Terraform with Google Cloud, see [Get started with Terraform](https://docs.cloud.google.com/docs/terraform/get-started-with-terraform).   
 
@@ -12,7 +12,7 @@ This guide is not an introduction to Terraform. For an introduction to using Ter
 
 ## Follow a standard module structure
 
-<div align="justify">
+<div align="left">
 
 - Terraform modules must follow the [standard module structure](https://www.terraform.io/docs/modules/create.html).   
 - Start every module with a `main.tf` file, where resources are located by default.   
@@ -27,7 +27,7 @@ This guide is not an introduction to Terraform. For an introduction to using Ter
 
 ## Adopt a naming convention
 
-<div align="justify">
+<div align="left">
 
 - Name all configuration objects using underscores to delimit multiple words. This practice ensures consistency with the naming convention for resource types, data source types, and other predefined values. This convention does not apply to name [arguments](https://www.terraform.io/docs/glossary#argument).   
 
@@ -41,7 +41,7 @@ resource "google_compute_instance" "web_server" {
 }
 ```
 
-<div align="justify">
+<div align="left">
 
 Not recommended:   
 
@@ -53,7 +53,7 @@ resource "google_compute_instance" "web-server" {
 }
 ```
 
-<div align="justify">
+<div align="left">
 
 - To simplify references to a resource that is the only one of its type (for example, a single load balancer for an entire module), name the resource `main`.   
   - It takes extra mental work to remember `some_google_resource.my_special_resource.id` versus `some_google_resource.main.id`.   
@@ -74,7 +74,7 @@ Recommended:
 resource "google_compute_global_address" "main" { ... }
 ```
 
-<div align="justify">
+<div align="left">
 
 Not recommended:   
 
@@ -86,7 +86,7 @@ resource "google_compute_global_address" "main_global_address" { … }
 
 ## Use variables carefully
 
-<div align="justify">
+<div align="left">
 
 - Declare all variables in `variables.tf`.   
 - Give variables descriptive names that are relevant to their usage or purpose:   
@@ -108,7 +108,7 @@ resource "google_compute_global_address" "main_global_address" { … }
 
 ## Expose outputs
 
-<div align="justify">
+<div align="left">
 
 - Organize all outputs in an `outputs.tf` file.   
 - Provide meaningful descriptions for all outputs.   
@@ -127,7 +127,7 @@ output "name" {
 }
 ```
 
-<div align="justify">
+<div align="left">
 
 Not recommended:   
 
@@ -142,7 +142,7 @@ output "name" {
 
 ## Use data sources
 
-<div align="justify">
+<div align="left">
 
 - Put [data sources](https://www.terraform.io/docs/configuration/data-sources.html) next to the resources that reference them. For example, if you are fetching an image to be used in launching an instance, place it alongside the instance instead of collecting data resources in their own file.   
 - If the number of data sources becomes large, consider moving them to a dedicated `data.tf` file.   
@@ -152,7 +152,7 @@ output "name" {
 
 ## Limit the use of custom scripts
 
-<div align="justify">
+<div align="left">
 
 - Use scripts only when necessary. The state of resources created through scripts is not accounted for or managed by Terraform.   
   - Avoid custom scripts, if possible. Use them only when Terraform resources don't support the desired behavior.   
@@ -164,7 +164,7 @@ output "name" {
 
 ## Include helper scripts in a separate directory
 
-<div align="justify">
+<div align="left">
 
 - Organize helper scripts that aren't called by Terraform in a `helpers/` directory.   
 - Document helper scripts in the `README.md` file with explanations and example invocations.   
@@ -174,7 +174,7 @@ output "name" {
 
 ## Put static files in a separate directory
 
-<div align="justify">
+<div align="left">
 
 - Static files that Terraform references but doesn't execute (such as startup scripts loaded onto Compute Engine instances) must be organized into a `files/` directory.   
 - Place lengthy HereDocs in external files, separate from their HCL. Reference them with the [`file()` function](https://www.terraform.io/language/functions/file).   
@@ -185,7 +185,7 @@ output "name" {
 
 ## Protect stateful resources
 
-<div align="justify">
+<div align="left">
 
 For stateful resources, such as databases, ensure that [deletion protection](https://www.terraform.io/language/meta-arguments/lifecycle) is enabled. For example:   
 
@@ -206,7 +206,7 @@ For stateful resources, such as databases, ensure that [deletion protection](htt
 
 ## Use built-in formatting
 
-<div align="justify">
+<div align="left">
 
 All Terraform files must conform to the standards of `terraform fmt`.   
 
@@ -214,7 +214,7 @@ All Terraform files must conform to the standards of `terraform fmt`.
 
 ### Limit the complexity of expressions
 
-<div align="justify">
+<div align="left">
 
 - Limit the complexity of any individual interpolated expressions. If many functions are needed in a single expression, consider splitting it out into multiple expressions by using [local values](https://www.terraform.io/docs/configuration/locals.html).   
 - Never have more than one ternary operation in a single line. Instead, use multiple local values to build up the logic.   
@@ -223,7 +223,7 @@ All Terraform files must conform to the standards of `terraform fmt`.
 
 ## Use `count` for conditional values
 
-<div align="justify">
+<div align="left">
 
 To instantiate a resource conditionally, use the [`count`](https://www.terraform.io/language/meta-arguments/count) meta-argument.   
 
@@ -245,7 +245,7 @@ For example:
     }
 ```
 
-<div align="justify">
+<div align="left">
 
 Be sparing when using user-specified variables to set the `count` variable for resources. If a resource attribute is provided for such a variable (like `project_id`) and that resource does not yet exist, Terraform can't generate a plan. Instead, Terraform reports the error [`value of count cannot be computed`](https://github.com/hashicorp/terraform/issues/17421).  In such cases, use a separate `enable_x` variable to compute the conditional logic.   
 
@@ -253,7 +253,7 @@ Be sparing when using user-specified variables to set the `count` variable for r
 
 ## Use `for_each` for iterated resources
 
-<div align="justify">
+<div align="left">
 
 If you want to create multiple copies of a resource based on an input resource, use the [`for_each`](https://www.terraform.io/language/meta-arguments/for_each) meta-argument.   
 
@@ -261,7 +261,7 @@ If you want to create multiple copies of a resource based on an input resource, 
 
 ## Publish modules to a registry
 
-<div align="justify">
+<div align="left">
 
 - **Reusable modules** : Publish reusable modules to a   
   [module registry](https://www.terraform.io/internals/module-registry-protocol).   
