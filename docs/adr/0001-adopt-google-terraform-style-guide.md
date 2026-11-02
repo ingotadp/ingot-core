@@ -1,6 +1,6 @@
 # 1. Adopt Google Cloud Terraform Style and Structural Standards
 
-<div align="justify">
+<div align="left">
 
 Date: 2026-11-02   
 
@@ -8,7 +8,7 @@ Date: 2026-11-02
 
 ## Status
 
-<div align="justify">
+<div align="left">
 
 Accepted   
 
@@ -16,7 +16,7 @@ Accepted
 
 ## Context
 
-<div align="justify">
+<div align="left">
 
 IngotADP requires a consistent, maintainable, and predictable Infrastructure as Code (IaC) topology across its foundational platform hub (`ingot-core`). Without codified conventions, module interfaces quickly diverge in variable naming, output formats, and dependency structures.   
 
@@ -24,7 +24,7 @@ IngotADP requires a consistent, maintainable, and predictable Infrastructure as 
 
 ## Decision
 
-<div align="justify">
+<div align="left">
 
 We adopt the official Google Cloud Terraform Style and Structure Best Practices as the architectural standard for `ingot-core`.   
 
@@ -39,7 +39,7 @@ Key standards enforced:
 
 ## Consequences
 
-<div align="justify">
+<div align="left">
 
 * **Positive:** Consistent module contracts; aligns with enterprise GCP architecture; provides clear provenance for dissertation methodology.   
 * **Negative:** Requires upfront schema compliance and CI linting checks.   
@@ -48,7 +48,7 @@ Key standards enforced:
 
 ## References
 
-<div align="justify">
+<div align="left">
 
 * `docs/references/gcp-terraform-style-guide.md`   
 
