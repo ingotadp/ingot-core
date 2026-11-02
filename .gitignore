@@ -1,0 +1,230 @@
+# ==============================================================================
+# IngotADP — Unified Git Ignore Rules
+# Standards: POSIX / Linux, Sublime Text, Direnv, Terraform, DevSecOps Toolchains
+# Repositories: .github, ingot-core, ingot-build, ingot-secure, ingot-sandbox, ingot-observe
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Infrastructure as Code & State (Terraform)
+# ------------------------------------------------------------------------------
+# Local plugin directories and cache
+**/.terraform/
+.tflint.d/
+
+# State files and local state backups
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Variable definition files (may contain sensitive overrides)
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Whitelist public template files
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration and credentials
+.terraformrc
+terraform.rc
+
+# ------------------------------------------------------------------------------
+# 2. Secrets, Cloud IAM & Local Environment Credentials
+# ------------------------------------------------------------------------------
+# Environment configuration & Direnv
+.direnv/
+.envrc
+.env
+.env.*
+.env*.local
+*.env
+*.env.*
+env-variables.txt
+
+# Preserve public environment templates and examples
+!.env.example
+!.env.*.example
+!.envrc.example
+
+# SSH keys, configs & identity stores
+**/.ssh/id_*
+**/.ssh/*_id_*
+**/.ssh/known_hosts
+**/.ssh/config
+id_rsa*
+id_ecdsa*
+id_ed25519*
+
+# Certificates, private keys & cryptographic keystores
+*.pem
+*.key
+*.pkcs8
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.pub
+
+# GPG & Secret Keyrings
+secring.*
+*.gpg
+*.asc
+
+# Google Cloud Platform & Service Account keys (Zero-Trust enforcement)
+*credentials*.json
+*service-account*.json
+*-key.json
+client_secret*.json
+.gcloud/
+
+# Kubernetes & Local Runner Secrets (e.g., nektos/act testing)
+.kube/config
+.secrets
+.act/
+
+# ------------------------------------------------------------------------------
+# 3. Policy-as-Code & Security Scanners (OPA, Trivy, Gitleaks)
+# ------------------------------------------------------------------------------
+# Trivy scan cache and local report dumps
+.trivy/
+trivy-report.*
+*.sarif
+
+# Gitleaks local run reports
+gitleaks-report.*
+
+# Open Policy Agent (OPA) / Rego test cache
+.opa.cache/
+
+# ------------------------------------------------------------------------------
+# 4. Polyglot Runtimes & Testbeds (Go, Python, Node.js)
+# ------------------------------------------------------------------------------
+# Go toolchain
+/bin/
+*.test
+*.exe
+*.dll
+*.so
+*.dylib
+go.work
+go.work.sum
+
+# Python toolchain & environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node.js & Package managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+
+# ------------------------------------------------------------------------------
+# 5. Local Runtime, Logs & Diagnostics
+# ------------------------------------------------------------------------------
+# Ephemeral directories
+/tmp/
+/temp/
+
+# Application runtime artifacts
+*.log
+*.tmp
+*.out
+*.pid
+*.seed
+*.retry
+
+# Linux process dumps
+core
+core.*
+vgcore.*
+
+# ------------------------------------------------------------------------------
+# 6. Editor & IDE (Sublime Text, VS Code, JetBrains)
+# ------------------------------------------------------------------------------
+# Sublime Text workspace states & project overrides
+*.sublime-workspace
+*.sublime-project
+
+# Package Control runtime artifacts & certificate bundles
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.merged-ca-bundle
+Package Control.user-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
+oscrypto-ca-bundle.crt
+
+# Sublime cache, session data & sensitive plugin settings
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.cache
+bh_unicode_properties.cache
+GitHub.sublime-settings
+sftp-config.json
+sftp-config-alt*.json
+
+# Alternative IDE workspaces
+.vscode/
+.idea/
+
+# ------------------------------------------------------------------------------
+# 7. Operating System & Filesystem (Linux / POSIX & macOS)
+# ------------------------------------------------------------------------------
+# Linux editor recovery, lock files & auto-saves
+*~
+*.swp
+*.swo
+.#*
+\#*#
+
+# Linux network & desktop environment metadata
+.fuse_hidden*
+.nfs*
+.directory
+.Trash-*
+.thumbnails/
+
+# macOS metadata & icon files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+Network Trash Folder
+Temporary Items
+.apdisk
+*.icloud
