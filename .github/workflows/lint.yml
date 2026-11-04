@@ -1,0 +1,53 @@
+name: "Terraform Lint and Validate"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  fmt:
+    name: "Check Formatting"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+  validate:
+    name: "Validate Modules and Environments"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Validate state-bucket Module
+        run: |
+          terraform -chdir=modules/state-bucket init -backend=false
+          terraform -chdir=modules/state-bucket validate
+
+      - name: Validate workload-identity Module
+        run: |
+          terraform -chdir=modules/workload-identity init -backend=false
+          terraform -chdir=modules/workload-identity validate
+
+      - name: Validate bootstrap Root
+        run: |
+          terraform -chdir=environments/bootstrap init -backend=false
+          terraform -chdir=environments/bootstrap validate
