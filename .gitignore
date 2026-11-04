@@ -37,6 +37,9 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# Local plan files
+terraform.tfplan
+
 # ------------------------------------------------------------------------------
 # 2. Secrets, Cloud IAM & Local Environment Credentials
 # ------------------------------------------------------------------------------
