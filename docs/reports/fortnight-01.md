@@ -1,6 +1,6 @@
 # MSc Dissertation Bi-Weekly Progress Report
 
-<div align="justify">
+<div align="left">
 
 **Project Title:** IngotADP: A Governance-First Modular Hub-and-Spoke Application Delivery Platform   
 **Student:** Benjamin Terence Weston   
@@ -13,7 +13,7 @@
 
 ### 1. Activities Undertaken in the Past Two Weeks
 
-<div align="justify">
+<div align="left">
 
 Primary technical work during Fortnight 1 concentrated on provisioning the foundational control plane and establishing automated, keyless CI governance within the core hub repository (`ingot-core`). To ensure reproducibility and an auditable academic record, each completed deliverable below is linked directly to its verified Git commit hash or merged pull request:   
 
@@ -44,7 +44,7 @@ Primary technical work during Fortnight 1 concentrated on provisioning the found
 
 ### 2. Plan for the Upcoming Two Weeks (Weeks 3–4)
 
-<div align="justify">
+<div align="left">
 
 Focus for Fortnight 2 shifts to completing the formal sign-off of Milestone 1 and preparing spoke orchestration:   
 
@@ -58,7 +58,7 @@ Focus for Fortnight 2 shifts to completing the formal sign-off of Milestone 1 an
 
 ### 3. Evaluation Against Plan / Milestone Status
 
-<div align="justify">
+<div align="left">
 
 - **Current Milestone Target:** Milestone 1 (M1 – Core Hub Validated) due at the end of Week 4.   
 - **Current Status:** **Green / Ahead of Schedule**.   
@@ -70,7 +70,7 @@ Focus for Fortnight 2 shifts to completing the formal sign-off of Milestone 1 an
 
 ### 4. Issues or Challenges Encountered
 
-<div align="justify">
+<div align="left">
 
 - **API Authorisation During Terraform Plan Refresh:**   
   - *Symptom:* The GitHub Actions speculative plan failed with HTTP 403 (`serviceusage.services.list` permission denied) during the state refresh phase (PR #1 / Run #41842157597).   
