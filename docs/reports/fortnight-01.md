@@ -1,4 +1,4 @@
-# MSc Dissertation Bi-Weekly Progress Report
+# MSc Project Bi-Weekly Progress Report
 
 <div align="left">
 
