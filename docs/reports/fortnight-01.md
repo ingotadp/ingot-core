@@ -48,7 +48,7 @@ Primary technical work during Fortnight 1 concentrated on provisioning the found
 
 Focus for Fortnight 2 shifts to completing the formal sign-off of Milestone 1 and preparing spoke orchestration:   
 
-1. **Spoke Landing Zone Design:** Scaffold repository templates and baseline Terraform configurations for the management plane spokes (`infra-observability`, `infra-security`, `infra-cicd`).   
+1. **Spoke Landing Zone Design:** Scaffold repository templates and baseline Terraform configurations for the execution spokes (`ingot-build`, `ingot-secure`, `ingot-observe`, `ingot-sandbox`).   
 2. **Formal Phase 1 / Milestone 1 (M1) Sign-Off:** Complete architectural baseline documentation and compile design artefacts for the Week 4 milestone gate.   
 3. **Phase 2 Baseline Preparation:** Outline policy enforcement specifications using Open Policy Agent (OPA/Rego) ahead of Phase 2 build and security spoke implementation.   
 
