@@ -1,4 +1,4 @@
-<a href="https://github.com/benweston/ingot-core">
+<a href="https://github.com/ingotadp/ingot-core">
     <img
         src="/assets/banners/main-banner.png"
         alt="A Modern, Highly Modular Hub-and-Spoke Application Delivery Platform (ADP)"
