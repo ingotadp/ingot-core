@@ -15,12 +15,6 @@
 
 <div align="justify">
 
-> Personal website engineered with [Astro 5](https://astro.build/) for zero-JS runtime performance, deployed globally across Google's Edge CDN via [Firebase Multisite](https://firebase.google.com/docs/hosting/multisites), and maintained through a state-of-the-art agentic pairing harness powered by [Google Antigravity](https://antigravity.google/).   
-
-</div>
-
-<div align="justify">
-
 > Foundational control plane and cloud governance hub for IngotADP.   
 
 </div>
