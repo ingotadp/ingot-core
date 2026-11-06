@@ -10,7 +10,7 @@
 
 # Ingot - Core
 
-[![CI](https://github.com/ingotadp/ingot-core/actions/workflows/ci.yml/badge.svg)](https://github.com/ingotadp/ingot-core/actions/workflows/ci.yml)
+[![CI](https://github.com/ingotadp/ingot-core/actions/workflows/lint.yml/badge.svg)](https://github.com/ingotadp/ingot-core/actions/workflows/lint.yml)
 [![Licence: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](https://github.com/ingotadp/ingot-core/blob/main/LICENSE)
 
 <div align="justify">
