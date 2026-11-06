@@ -15,7 +15,7 @@
 
 <div align="justify">
 
-> Foundational control plane and cloud governance hub for IngotADP.   
+> Foundational control plane and cloud governance hub for [**IngotADP**](https://github.com/ingotadp).   
 
 </div>
 
