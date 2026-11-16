@@ -10,15 +10,21 @@ permissions:
   contents: read
 
 jobs:
+  security-gate:
+    name: "IngotADP Security Gate"
+    uses: ingotadp/ingot-secure/.github/workflows/reusable-security-gate.yml@9e210d8c0a35966d24803e6799083ce5dd4ffb95
+    with:
+      run-iac-scan: true
+
   fmt:
     name: "Check Formatting"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3
         with:
           terraform_version: "1.9.0"
 
@@ -30,10 +36,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3
         with:
           terraform_version: "1.9.0"
 
