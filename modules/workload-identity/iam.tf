@@ -1,8 +1,8 @@
-# Authorise GitHub repositories within the organisation to impersonate the Service Account
+# Authorise only the specified GitHub repository to impersonate the Service Account
 resource "google_service_account_iam_member" "workload_identity_user" {
   service_account_id = google_service_account.main.name
   role               = "roles/iam.workloadIdentityUser"
-  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.main.name}/attribute.repository_owner/${var.github_org}"
+  member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.main.name}/attribute.repository/${var.github_org}/${var.github_repo}"
 }
 
 # Assign required project-level capabilities to the federated Service Account
