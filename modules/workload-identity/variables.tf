@@ -21,6 +21,12 @@ variable "github_org" {
   default     = "ingotadp"
 }
 
+variable "github_repo" {
+  description = "The specific GitHub repository authorised to impersonate the runner Service Account."
+  type        = string
+  default     = "ingot-core"
+}
+
 variable "service_account_id" {
   description = "The account ID for the dedicated GitHub Actions runner Service Account."
   type        = string
