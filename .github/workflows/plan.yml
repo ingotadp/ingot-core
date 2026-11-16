@@ -21,21 +21,37 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Checkout ingot-secure Policies
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: ingotadp/ingot-secure
+          ref: 9e210d8c0a35966d24803e6799083ce5dd4ffb95
+          path: .ingot-secure
 
       - name: Authenticate to Google Cloud via WIF
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@c200f3691d83b41bf9bbd8638997a462592937ed # v2
         with:
           workload_identity_provider: "projects/76811299324/locations/global/workloadIdentityPools/ingot-github-pool/providers/ingot-github-provider"
           service_account: "ingot-gha-runner@ingotadp-core.iam.gserviceaccount.com"
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3
         with:
           terraform_version: "1.9.0"
+          terraform_wrapper: false
+
+      - name: Install Conftest
+        run: |
+          curl -fsSL https://github.com/open-policy-agent/conftest/releases/download/v0.71.1/conftest_0.71.1_Linux_x86_64.tar.gz | tar -xz -C /usr/local/bin conftest
 
       - name: Terraform Init
         run: terraform -chdir=environments/bootstrap init
 
-      - name: Terraform Plan
-        run: terraform -chdir=environments/bootstrap plan -no-color
+      - name: Terraform Plan and Policy Evaluation
+        run: |
+          terraform -chdir=environments/bootstrap plan -no-color -out=tfplan.binary
+          terraform -chdir=environments/bootstrap show -json tfplan.binary > tfplan.json
+          conftest test --policy .ingot-secure/policies/terraform --namespace ingot.terraform.security tfplan.json
+          rm -f environments/bootstrap/tfplan.binary tfplan.json
